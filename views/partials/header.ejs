@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kate Ko Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+</head>
+<body>
+    <div class = "wrapper">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo"></div>
+                <ul>
+                    <% menu.forEach(function(item) { %>
+                        <li><a href="/<%= item.link %>" title ="<%= item.title %>"> <%= item.label %></a></li>
+                        <% }) %>
+                </ul>
+            </div>
+        </nav>
+
+

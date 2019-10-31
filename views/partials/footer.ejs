@@ -1,0 +1,31 @@
+<footer class="footer">
+
+        <!-- <p>Send your email, if you would like to contact KATE.</p> -->
+        <form class="contact" action="/contact" method="post">
+        <!-- /// need to add fieldset and legend tag-->
+            <fieldset>
+                <legend>Send your email, if you would like to contact KATE.</legend>
+                <div class="form">
+                    <div class="name">
+                        <label for="name">Name</label>               
+                        <input id="name" type="text" name="name" placeholder="Name" required minlength="4" maxlength="20">
+                    </div>
+                    <div class="email">
+                        <label for="email">E-mail</label>
+                        <input id="email" type="email" name="email" placeholder="E-mail" maxlength="50" >
+                    </div>
+
+                    <div class="button">
+                        <button type="submit" id="submit" class="submit" value="submit"> Send</button> 
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    <div>
+        <p>
+            &copy; 2019 KATE KO. All rights reserved.
+        </p>
+    </div>
+</footer>
+</body>
+</html>
