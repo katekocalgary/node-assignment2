@@ -1,4 +1,18 @@
+/* * * * * * * * * * * * * * * * * * *
+JS for Home Page 
+* * * * * * * * * * * * * * * * * * */
 
+/* 
+Created Tile UI using array of data
+(2019-10-16, Kate Ko)
+  * Created html element to display topic, title, button.
+  * Created style background color and image.
+  * Created tiles.
+*/
+
+
+
+// Array of data - backgroud color and image
 const green = 'rgba(118,174, 170, 0.7)'
 const greenG = 'rgba(212, 227, 227, 0.4)), url("./img/city.jpg") no-repeat left bottom'
 const black = 'rgba(23,35, 50, 1)'
@@ -12,46 +26,41 @@ const pinkG = 'rgba(240, 222, 223, 0.2)), url("./img/molain.jpg") no-repeat left
 const blue = 'rgba(98,189, 254, 0.8)'
 const blueG = 'rgba(225, 242, 250, 0.4)), url("./img/picme2.jpg") no-repeat left top'
 
+// Array of object - contents
 const data = [
     {
         topic: 'Product',
         title: 'Calgary Crime Dash Board',
-        button: 'move',
         link : 'product',
         color: [green, greenG]
     },
     {
         topic: 'Work Experience',
         title: '10 years, worked in the mobile and web industry',
-        button: 'more detail',
         link : 'resume',
         color: [black, blackG]
     },
     {
         topic: 'Education',
         title: 'Masters Degree in Science Communication',
-        button: 'more education',
         link : 'resume',
         color: [brown, brownG]
     },
     {
         topic: 'Certification',
         title: 'Project Management Professional',
-        button: 'more certification',
         link : 'resume',
         color: [greenblue, greenblueG]
     },
     {
         topic: 'Gallery',
         title: 'What a joyful life ',
-        button: 'more pictures',
         link : 'gallery',
         color: [pink, pinkG]
     },
     {
         topic: 'Technical skills',
         title: 'Full stack Developer',
-        button: 'more skills',
         link : 'resume',
         color: [blue, blueG]
     }
@@ -77,9 +86,8 @@ function makeTopic(topicV){
     topicDiv.setAttribute("class", "topic");
     topicDiv.innerText = topicV;
     cardWrap.appendChild(topicDiv);
-    return topicDiv
+    return topicDiv;
 }
-
 
 
 // Title create
@@ -89,18 +97,21 @@ function makeTitle(titleV){
     titleDiv.setAttribute("class","title");
     titleDiv.innerText = titleV;
     cardWrap.appendChild(titleDiv);
-    return titleDiv
+    return titleDiv;
 }
 
-// Button create
-function makeButton(buttonV){
+
+// Link button create
+function makeLink(linkV){
     const cardWrap = document.querySelector(".card");
-    const buttonDiv = document.createElement("div");
-    buttonDiv.setAttribute("class","buy-button");
-    buttonDiv.innerText = buttonV;
-    cardWrap.appendChild(buttonDiv);
-    return buttonDiv;
+    const buttonLink = document.createElement("a");
+    buttonLink.setAttribute("href","/" + linkV);
+    buttonLink.setAttribute("class","buy-button");
+    buttonLink.innerText = "more";
+    cardWrap.appendChild(buttonLink);
+    return buttonLink;
 }
+
 
 // Repeat tile & Data insert to each function
 
@@ -117,14 +128,16 @@ for(let i=0; i < data.length ; i++) {
         // Title
         const titleV = data[i].title;
         const title = makeTitle(titleV);
-        // Button
-        const buttonV = data[i].button;
-        const button = makeButton(buttonV)
+
+        // Button link
+        const linkV = data[i].link;
+        const link = makeLink(linkV)
 
         // Define location
         cardDiv.appendChild(topic);
         cardDiv.appendChild(title);
-        cardDiv.appendChild(button);
+        cardDiv.appendChild(link);
+    
 
         return cardDiv;
     }

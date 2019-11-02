@@ -1,53 +1,49 @@
 const express = require('express');
 const path = require('path');
 const navInfo = require('./navInfo');
-const morgan = require('morgan');
-// const favicon = require('serve-favicon');
-
+const contactLog = require('./contactLog');
 
 const app = express();
 
-// console.log(definitions);
-app.set('view engine','ejs'); // allows us to exclude the file extension
+app.set('view engine','ejs'); 
 
-// This middleware is needed to read http post data
+// Middleware for reading http post data
 app.use(express.urlencoded({extended : false}));
+// Middleware for logging contact form data
+app.use('/contact', contactLog);
 
+// Create a get endpoint that accepts requests index
 app.get('/', function(request, response){
-  response.render("index", {menu: navInfo});
+  response.render('index', {menu: navInfo, page: 'index'});
 });
 
 
+// Create a POST endpoint that accepts requests from the form
 app.post('/contact', function(request, response){
-  const name = request.body.name;
-  const email = request.body.email;
-  var obj = {nameD: name, emailD: email};
-  // response.send (obj);
-  response.render("contact", obj);
+  const nameD = request.body.name;
+  const emailD = request.body.email;
+  const obj = {name: nameD, email: emailD};
+    response.render('contact', obj);
 });
 
-// Set up our view endpoints
-
+// Create a get endpoint that accepts requests page
 app.get('/:page', function(request, response){
   if(request.accepts('ejs')) {
     response.send('404: File Not Found');
   } 
-    response.render(request.params.page, {menu: navInfo})
+    response.render(request.params.page, {menu: navInfo, page: request.params.page})
 });
-
-
-
-// app.use('/favicon.ico', express.static('img/favicon.ico'));
 
 // Serve static assets
 app.use(express.static(path.join(__dirname, 'assets')));
 
-// Catch our 404s
+// Catch 404 error
 app.use(function(req, res, next) {
   res.status(404);
   res.send('404: File Not Found');
 });
 
+// Set PORT
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, function(){

@@ -1,23 +1,28 @@
+// Navigation data module
 const navInfo = [
- {
+  {
     label: 'Home',
     link: 'index',
-    title: 'Kate Ko portfolio'
+    title: 'portfolio',
+    description: "Welcome to Kate's portfolio"
   },
   {
     label: 'Resume',
     link: 'resume',
-    title: 'Kate Ko resume'
+    title: 'resume',
+    description: "Qualified web specialist"
   },
   {
     label: 'Gallery',
     link: 'gallery',
-    title: 'Kate Ko gallery'
+    title: 'gallery',
+    description: "What a joyful life"
   },
   {
     label: 'Product',
     link: 'product',
-    title: 'Calgary crime dash board'
+    title: 'sample product',
+    description: "Caglgary crime Dash board using API"
   }  
 ]
 module.exports = navInfo;

@@ -1,14 +1,40 @@
-
-
-        <section class="section">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact submitted</title>
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+</head>
+<body>
+    <div class = "wrapper">
+        <nav class="navbar">
+            <div class="container">
+                <a href = "/index" title="home"><div class="logo"></div></a>
+            </div>
+        </nav>
+        <!-- Displays the submitted name and email START-->
+        <section class="sectionContact">
+            <h2>Thank you for sending your email address.</h2>
+            <div class="contactData">
+                <ul>
+                    <li> Name: <%= name %> </li>
+                    <li> Email: <%= email %> </li>
+                </ul>
+            </div>
             <div>
-                <div>
-                  <p> Thank you for asking </p>
-                  <p> name: <%= nameD %> </p>
-                  <p> email: <%= emailD %> </p>
-                </div>
+                <a href="/index" title="home" class="home">Home</a> 
             </div>
         </section>
+        <!-- Displays the submitted name and email END-->
     </div>
+
+    <footer class="footer">
+        <div class="copyright">
+            <p>
+                &copy; 2019 KATE KO. All rights reserved.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
 
 

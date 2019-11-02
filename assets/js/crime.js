@@ -1,6 +1,15 @@
 /* * * * * * * * * * * * * * * * * * *
-Product Page 
+JS for product Page 
 * * * * * * * * * * * * * * * * * * */
+
+/* 
+Calgary Crime Dashboard using API 
+(2019-10-21, Kate Ko)
+  * Community crime counts search
+  * Sector Top 5 by crime counts
+  * Community Top 5 by crime counts
+  * Crime category Top 5 by crime counts 
+*/
 
 
 // General definition 
@@ -23,7 +32,6 @@ const category = document.querySelector(".category")
 
 
 // Api calls
-
 const api = {
   url: "https://data.calgary.ca/resource/848s-4m4z.json?year=2019",
   searchUrl: comValue => "https://data.calgary.ca/resource/848s-4m4z.json?year=2019&community_name=" + comValue
@@ -51,11 +59,6 @@ const api = {
       const del = document.getElementById("keyword")
       del.value=""
 
-      
-        // const del=document.querySelector(".searchResult")
-        // del.innerHTML=""
-
-
       const comValue = value.toUpperCase()
       status.textContent = ""
       communityTitle.textContent = comValue
@@ -68,10 +71,8 @@ const api = {
   })
 
 
-
   // 2. Search result show
 
- 
   function comDataFetch(searchUrl){
 
     // 5. Function - add line community crime info
@@ -138,9 +139,7 @@ const api = {
         for (var i=0 ; i < categoryList.length ; i++){
           const categoryListEach = categoryList[i]
           addLine((i+1)+". "+categoryListEach[0] + " : " + categoryListEach[1],searchList2)
-
         }
-
     } 
 
     // Result layer close event
@@ -157,9 +156,7 @@ const api = {
     .then(x => {
       resultCountSum(x)
     })
-
   }
-
 
 /*********************************/
 // top 5 information
